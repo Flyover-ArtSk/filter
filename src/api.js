@@ -7,7 +7,7 @@ var instance = axios.create({
 export default (method, params = null, errorHandler = null) => {
     if(errorHandler) {
         instance.interceptors.response.use(undefined, err => {
-            errorHandler(err.response.statusText);
+            errorHandler(err.response.data.error.message);
             throw err;
         });
     }

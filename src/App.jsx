@@ -69,10 +69,11 @@ class App extends Component {
                         pagination: {
                             ...this.state.pagination,
                             ...response.data.payload.pagination
-                        }
+                        },
+                        error: null
                     })
                 else {
-                    this.setState({loading: false, error: response.error.message});
+                    this.setState({loading: false, error: response.data.error.message});
                 }
             })
     }
@@ -145,8 +146,6 @@ class App extends Component {
                     ...query
                 }
             });
-
-            console.log(query);
             this.updateData(query, page);
         }
     }
